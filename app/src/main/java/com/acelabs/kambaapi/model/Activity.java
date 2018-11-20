@@ -230,4 +230,84 @@ public class Activity {
     public void setBank_account(BankAccount bank_account) {
         this.bank_account = bank_account;
     }
+
+    public int getAmount_paid() {
+        return amount_paid;
+    }
+
+    public void setAmount_paid(int amount_paid) {
+        this.amount_paid = amount_paid;
+    }
+
+    public String getMobile_operator_type() {
+        return mobile_operator_type;
+    }
+
+    public void setMobile_operator_type(String mobile_operator_type) {
+        this.mobile_operator_type = mobile_operator_type;
+    }
+
+    public String getMobile_operator_name() {
+        return mobile_operator_name;
+    }
+
+    public void setMobile_operator_name(String mobile_operator_name) {
+        this.mobile_operator_name = mobile_operator_name;
+    }
+
+    public int getValidity_days() {
+        return validity_days;
+    }
+
+    public void setValidity_days(int validity_days) {
+        this.validity_days = validity_days;
+    }
+
+    public int getAmount_of_utts() {
+        return amount_of_utts;
+    }
+
+    public void setAmount_of_utts(int amount_of_utts) {
+        this.amount_of_utts = amount_of_utts;
+    }
+
+    public int getRecharge_price() {
+        return recharge_price;
+    }
+
+    public void setRecharge_price(int recharge_price) {
+        this.recharge_price = recharge_price;
+    }
+
+    public String getRecharge_code() {
+        return recharge_code;
+    }
+
+    public void setRecharge_code(String recharge_code) {
+        this.recharge_code = recharge_code;
+    }
+
+    public String getMobile_recharge_card_id() {
+        return mobile_recharge_card_id;
+    }
+
+    public void setMobile_recharge_card_id(String mobile_recharge_card_id) {
+        this.mobile_recharge_card_id = mobile_recharge_card_id;
+    }
+
+    public String getPhone_number() {
+        return phone_number;
+    }
+
+    public void setPhone_number(String phone_number) {
+        this.phone_number = phone_number;
+    }
+
+    public String getTransaction_id() {
+        return transaction_id;
+    }
+
+    public void setTransaction_id(String transaction_id) {
+        this.transaction_id = transaction_id;
+    }
 }

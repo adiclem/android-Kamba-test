@@ -66,16 +66,19 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
 
                         if(clickedDataItem.getTransaction_type().equals("PAYMENT")){
                             Intent intent = new Intent(context, DetailActivity.class);
+
                             intent.putExtra("transaction_type", clickedDataItem.getTransaction_type());
                             intent.putExtra("to", clickedDataItem.getTo().getFirstname()+" "+clickedDataItem.getTo().getLastname());
                             intent.putExtra("amount", String.valueOf(clickedDataItem.getAmount()));
                             intent.putExtra("description", clickedDataItem.getDescription());
                             intent.putExtra("date", clickedDataItem.getCreated_at());
+
                             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                             context.startActivity(intent);
 
                         }else if(clickedDataItem.getTransaction_type().equals("WITHDRAWAL")){
                             Intent intent = new Intent(context, DetailActivity.class);
+
                             intent.putExtra("transaction_type", clickedDataItem.getTransaction_type());
                             intent.putExtra("amount",String.valueOf(clickedDataItem.getAmount()));
                             if(clickedDataItem.getBank_account() == null){
@@ -85,11 +88,14 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
                             }
                             intent.putExtra("status", clickedDataItem.getStatus());
                             intent.putExtra("date", clickedDataItem.getCreated_at());
+
                             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                             context.startActivity(intent);
 
                         }else if(clickedDataItem.getTransaction_type().equals("DEPOSIT")){
+
                             Intent intent = new Intent(context, DetailActivity.class);
+
                             intent.putExtra("transaction_type", clickedDataItem.getTransaction_type());
                             intent.putExtra("to", clickedDataItem.getCompany_bank_account().getHolder());
                             intent.putExtra("amount", String.valueOf(clickedDataItem.getAmount()));
@@ -98,10 +104,29 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
                             intent.putExtra("bank", clickedDataItem.getCompany_bank_account().getBank().getName());
                             intent.putExtra("status", clickedDataItem.getStatus());
                             intent.putExtra("date", clickedDataItem.getCreated_at());
+
                             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                             context.startActivity(intent);
-                        }
 
+                        }else if (clickedDataItem.getTransaction_type().equals("RECHARGE")) {
+
+                            Intent intent = new Intent(context, DetailActivity.class);
+
+                            intent.putExtra("transaction_type", clickedDataItem.getTransaction_type());
+                            intent.putExtra("phoneNumber", clickedDataItem.getPhone_number());
+                            intent.putExtra("amountPaid", String.valueOf(clickedDataItem.getAmount_paid()));
+                            intent.putExtra("rechargePrice", String.valueOf(clickedDataItem.getRecharge_price()));
+                            intent.putExtra("amountOfUtts", String.valueOf(clickedDataItem.getAmount_of_utts()));
+                            intent.putExtra("validityDays", String.valueOf(clickedDataItem.getValidity_days()));
+                            intent.putExtra("mobOperatorName", clickedDataItem.getMobile_operator_name());
+                            intent.putExtra("mobOperatorType", clickedDataItem.getMobile_operator_type());
+                            intent.putExtra("status", clickedDataItem.getStatus());
+                            intent.putExtra("date", clickedDataItem.getCreated_at());
+
+                            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                            context.startActivity(intent);
+
+                        }
 
                     }
 

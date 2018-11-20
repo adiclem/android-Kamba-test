@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
     private void loadJSON(){
 
         try {
-            //Creating service
+            //Creating service instance
             Service apiService = Client.getClient().create(Service.class);
             Call<ArrayList<Activity>> call = apiService.getActivities("Token token=" + token);
 
@@ -59,10 +59,12 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onResponse(Call<ArrayList<Activity>> call, Response<ArrayList<Activity>> response) {
 
+                    //Creating an Adapter with the Context and the ArrayList of Activities
+                    //returned by the Kamba API
                     mAdapter = new MainAdapter(getApplicationContext(),response.body());
-                    mRecyclerView.setAdapter(mAdapter);
 
-                    //Log.d("TESTER:", response.body().toString());
+                    //Setting the RecyclerView Adapter
+                    mRecyclerView.setAdapter(mAdapter);
                 }
 
                 @Override
