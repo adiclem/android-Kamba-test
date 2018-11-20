@@ -36,7 +36,6 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull MainAdapter.ViewHolder holder, int position) {
         holder.mTransaction_type.setText(mActivities.get(position).getTransaction_type());
-        holder.mDate.setText(mActivities.get(position).getCreated_at());
 
     }
 
@@ -48,13 +47,11 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         public TextView mTransaction_type;
-        public TextView mDate;
 
         public ViewHolder(View itemView) {
                         super(itemView);
 
-                    mTransaction_type = (TextView) itemView.findViewById(R.id.title);
-                    mDate = (TextView) itemView.findViewById(R.id.date);
+                    mTransaction_type = (TextView) itemView.findViewById(R.id.transaction_type);
 
                     itemView.setOnClickListener(new View.OnClickListener() {
                             @Override

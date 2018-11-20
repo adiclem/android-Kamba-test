@@ -32,10 +32,10 @@ public class DetailActivity extends AppCompatActivity {
 
         if(transaction_type.equals("DEPOSIT")){
 
-            //Changing the action bar title to Deposit details
+            // Changing the action bar title to Deposit details
             getSupportActionBar().setTitle("Deposit details");
 
-            //Getting data from the intent
+            // Getting data from the intent
             String to = getIntent().getExtras().getString("to");
             String amount = getIntent().getExtras().getString("amount");
             String paymentMethod = getIntent().getExtras().getString("paymentMethod");
@@ -44,45 +44,45 @@ public class DetailActivity extends AppCompatActivity {
             String status = getIntent().getExtras().getString("status");
             String date = getIntent().getExtras().getString("date");
 
-            //Hiding Payment screen layout
+            // Hiding Payment screen layout
             hidePaymentLayout();
-            //Hiding Recharge screen layout
+            // Hiding Recharge screen layout
             hideRechargeLayout();
-            //Hiding Withdrawal screen layout
+            // Hiding Withdrawal screen layout
             hideWithdrawalLayout();
-            //Initializing Deposit layout views
-            initDepositViews();
-            //Passing data from the intent into the payment views
+            // Initializing Deposit layout views
+            initDepositLayout();
+            // Passing data from the intent into the payment views
             setDataToDepositViews(to, amount, paymentMethod, accountType, bank, status, date);
 
         }else if(transaction_type.equals("PAYMENT")){
 
-            //Changing the action bar title to Payment details
+            // Changing the action bar title to Payment details
             getSupportActionBar().setTitle("Payment details");
 
-            //Getting data from the intent
+            // Getting data from the intent
             String to = getIntent().getExtras().getString("to");
             String amount = getIntent().getExtras().getString("amount");
             String description = getIntent().getExtras().getString("description");
             String date = getIntent().getExtras().getString("date");
 
-            //Hiding Deposit screen layout
+            // Hiding Deposit screen layout
             hideDepositLayout();
-            //Hiding Recharge screen layout
+            // Hiding Recharge screen layout
             hideRechargeLayout();
-            //Hiding Withdrawal screen layout
+            // Hiding Withdrawal screen layout
             hideWithdrawalLayout();
-            //Initializing Payment layout views
-            initPaymentViews();
-            //Passing data from the intent into payment views
+            // Initializing Payment layout views
+            initPaymentLayout();
+            // Passing data from the intent into payment views
             setDataToPaymentViews(to, amount, description, date);
 
         }else if(transaction_type.equals("RECHARGE")){
 
-            //Changing the action bar title to Recharge details
+            // Changing the action bar title to Recharge details
             getSupportActionBar().setTitle("Recharge details");
 
-            //Getting the data from the intent
+            // Getting the data from the intent
             String phoneNumber = getIntent().getExtras().getString("phoneNumber");
             String amountPaid = getIntent().getExtras().getString("amountPaid");
             String rechargePrice = getIntent().getExtras().getString("rechargePrice");
@@ -93,38 +93,38 @@ public class DetailActivity extends AppCompatActivity {
             String status = getIntent().getExtras().getString("status");
             String date = getIntent().getExtras().getString("date");
 
-            //Hiding Deposit screen layout
+            // Hiding Deposit screen layout
             hideDepositLayout();
-            //Hiding Payment screen layout
+            // Hiding Payment screen layout
             hidePaymentLayout();
-            //Hiding Withdrawal screen layout
+            // Hiding Withdrawal screen layout
             hideWithdrawalLayout();
-            //Initializing Recharge layout views
+            // Initializing Recharge layout views
             initRechargeLayout();
-            //Passing data from the intent into the Recharge views
+            // Passing data from the intent into the Recharge views
             setDataToRechargeViews(phoneNumber, amountPaid, rechargePrice, amountOfUtts, validityDays,
                     mobOperatorName, mobOperatorType, status, date);
 
         }else if(transaction_type.equals("WITHDRAWAL")){
 
-            //Changing the action bar title to Withdrawal details
+            // Changing the action bar title to Withdrawal details
             getSupportActionBar().setTitle("Withdrawal details");
 
-            //Getting the data from the intent
+            // Getting the data from the intent
             String amount = getIntent().getExtras().getString("amount");
             String bank = getIntent().getExtras().getString("bank");
             String status = getIntent().getExtras().getString("status");
             String data = getIntent().getExtras().getString("date");
 
-            //Hiding Payment layout
+            // Hiding Payment layout
             hidePaymentLayout();
-            //Hiding Deposit layout
+            // Hiding Deposit layout
             hideDepositLayout();
-            //Hiding Recharge screen layout
+            // Hiding Recharge screen layout
             hideRechargeLayout();
-            //Initializing Withdrawal layout views
-            initWithdrawalViews();
-            //Passing data from the intent to the Withdrawal views
+            // Initializing Withdrawal layout views
+            initWithdrawalLayout();
+            // Passing data from the intent to the Withdrawal views
             setDataToWithdrawalViews(amount, bank, status, data);
         }
 
@@ -140,9 +140,8 @@ public class DetailActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    //Payment Screen Layout Setup
-
-    public void initPaymentViews(){
+    // Initialize Payment screen Layout
+    public void initPaymentLayout(){
         constraintLayout = (ConstraintLayout) findViewById(R.id.payment_layout);
         constraintLayout.setVisibility(View.VISIBLE);
         mToTv = (TextView) findViewById(R.id.to_txt);
@@ -151,11 +150,7 @@ public class DetailActivity extends AppCompatActivity {
         mDateTv = (TextView) findViewById(R.id.date_txt);
     }
 
-    public void hidePaymentLayout(){
-        constraintLayout = (ConstraintLayout) findViewById(R.id.payment_layout);
-        constraintLayout.setVisibility(View.INVISIBLE);
-    }
-
+    // Set data to Payment layout views
     public void setDataToPaymentViews(String to, String amount, String description, String date){
         mToTv.setText(to);
         mAmountTv.setText(amount + " Kz");
@@ -163,8 +158,13 @@ public class DetailActivity extends AppCompatActivity {
         mDateTv.setText(date);
     }
 
-    // Recharge Screen layout Setup
+    // Hide Payment screen Layout
+    public void hidePaymentLayout(){
+        constraintLayout = (ConstraintLayout) findViewById(R.id.payment_layout);
+        constraintLayout.setVisibility(View.INVISIBLE);
+    }
 
+    // Initialize Recharge screen layout
     public void initRechargeLayout(){
         constraintLayout = (ConstraintLayout) findViewById(R.id.recharge_layout);
         constraintLayout.setVisibility(View.VISIBLE);
@@ -179,6 +179,7 @@ public class DetailActivity extends AppCompatActivity {
         mDateTv = (TextView) findViewById(R.id.recharge_date_txt);
     }
 
+    // Set data to Recharge layout views
     public void setDataToRechargeViews(String phoneNumber, String amountPaid, String rechargePrice,
                                        String amountOfUtts, String validityDays, String mobOperatorName,
                                        String mobOperatorType, String status, String date){
@@ -193,14 +194,14 @@ public class DetailActivity extends AppCompatActivity {
         mDateTv.setText(date);
     }
 
+    // Hide Recharge screen layout
     public void hideRechargeLayout(){
         constraintLayout = (ConstraintLayout) findViewById(R.id.recharge_layout);
         constraintLayout.setVisibility(View.INVISIBLE);
     }
 
-    //Withdrawal Screen Layout Setup
-
-    public void initWithdrawalViews(){
+    // Initialize Withdrawal screen layout
+    public void initWithdrawalLayout(){
         constraintLayout = (ConstraintLayout) findViewById(R.id.withdrawal_layout);
         constraintLayout.setVisibility(View.VISIBLE);
         mAmountTv = (TextView) findViewById(R.id.withdrawal_amount_txt);
@@ -209,11 +210,7 @@ public class DetailActivity extends AppCompatActivity {
         mDateTv = (TextView) findViewById(R.id.withdrawal_date_txt);
     }
 
-    public void hideWithdrawalLayout(){
-        constraintLayout = (ConstraintLayout) findViewById(R.id.withdrawal_layout);
-        constraintLayout.setVisibility(View.INVISIBLE);
-    }
-
+    // Set data to Withdrawal layout views
     public void setDataToWithdrawalViews(String amount, String bank, String status, String date){
         mAmountTv.setText(amount + " Kz");
         mBankTv.setText(bank);
@@ -221,9 +218,14 @@ public class DetailActivity extends AppCompatActivity {
         mDateTv.setText(date);
     }
 
-    //Deposit Screen Layout Setup
+    // Hide Withdrawal screen layout
+    public void hideWithdrawalLayout(){
+        constraintLayout = (ConstraintLayout) findViewById(R.id.withdrawal_layout);
+        constraintLayout.setVisibility(View.INVISIBLE);
+    }
 
-    public void initDepositViews(){
+    // Initialize Deposit screen layout
+    public void initDepositLayout(){
         constraintLayout = (ConstraintLayout) findViewById(R.id.deposit_layout);
         constraintLayout.setVisibility(View.VISIBLE);
         mToTv = (TextView) findViewById(R.id.deposit_to_txt);
@@ -235,11 +237,7 @@ public class DetailActivity extends AppCompatActivity {
         mDateTv = (TextView) findViewById(R.id.deposit_date_txt);
     }
 
-    public void hideDepositLayout(){
-        constraintLayout = (ConstraintLayout) findViewById(R.id.deposit_layout);
-        constraintLayout.setVisibility(View.INVISIBLE);
-    }
-
+    // Set data to Deposit layout views
     public void setDataToDepositViews(String to, String amount, String paymentMethod, String accountType, String bank, String status, String date){
         mToTv.setText(to);
         mAmountTv.setText(amount + " Kz");
@@ -249,5 +247,13 @@ public class DetailActivity extends AppCompatActivity {
         mStatusTv.setText(status);
         mDateTv.setText(date);
     }
+
+    // Hide Deposit screen layout
+    public void hideDepositLayout(){
+        constraintLayout = (ConstraintLayout) findViewById(R.id.deposit_layout);
+        constraintLayout.setVisibility(View.INVISIBLE);
+    }
+
+
 
 }

@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
         mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         mLayoutManager = new LinearLayoutManager(this);
 
+        //This divides the recyclerview items with an horizontal line
         DividerItemDecoration itemDecoration = new DividerItemDecoration(this, mLayoutManager.getOrientation());
 
         mRecyclerView.setHasFixedSize(true);
@@ -48,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    // Setting up Retrofit
     private void loadJSON(){
 
         try {
